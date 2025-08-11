@@ -3,6 +3,18 @@
 - 리액트용 변수이다. (수업편의)
 - set으로 값을 변화시키면 리랜더링을 한다.
 
+## 0. `@` 으로 절대경로 설정하기
+
+- tsconfig.json
+
+```json
+    "baseUrl": "src",
+    "paths": {
+      "@/*": ["*"], // @/ 로 src 폴더 전체를 참조
+      "@types/*": ["types/*"] // @types 로 src/types 참조
+    },
+```
+
 ## 1. 기본예제
 
 - /src/components 폴더 생성
@@ -180,6 +192,7 @@ export default User;
 ```
 
 ## 5. 실습 예제 4 (useState 버전 Todo)
+
 - 타입정의를 위한 폴더 : /src/types 폴더 생성
   - todoType.ts 파일 생성
 
