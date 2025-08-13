@@ -1,13 +1,15 @@
 import { useState } from 'react';
 import { TodoType } from '../../types/todoType';
+import { useTodosActions } from '../../context/todo/hooks';
 
 type TodoWirteProps = {
   setTodos: React.Dispatch<React.SetStateAction<TodoType[]>>;
   handleTodoUpdate: (newTodo: TodoType) => void;
 };
 
-function TodoWirte({ setTodos, handleTodoUpdate }: TodoWirteProps) {
+function TodoWirte() {
   // js 자리
+  const { addTodo } = useTodosActions();
   // 할일 제목 값 관리
   const [title, setTitle] = useState<string>('');
 
@@ -33,12 +35,7 @@ function TodoWirte({ setTodos, handleTodoUpdate }: TodoWirteProps) {
         title: title,
         completed: false,
       };
-      // 1. 만약 setTodo 등의 useState 를 활용한다면?
-      // 아래는 prev : 현재 최신 state 를 나타남.
-      // setTodos(prev => [newTodo, ...prev])
-      // 2. 함수의 매개변수로 전달한다면?
-      handleTodoUpdate(newTodo);
-
+      addTodo(newTodo);
       setTitle('');
     }
   };
